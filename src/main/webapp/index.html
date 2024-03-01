@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Calculator</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        .calculator {
+            width: 300px;
+            margin: 140px auto;
+            border: 5px solid #ccc;
+            padding: 10px;
+            background-image:url(https://e1.pxfuel.com/desktop-wallpaper/931/463/desktop-wallpaper-iron-man-eyes-1920x1080-iron-man-eyes-thumbnail.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+/*            border-image:linear-gradient(to right,Blue,pink);*/
+            animation-name:lights;
+            animation-duration:8s;
+            animation-delay: 3s;
+            animation-iteration-count:infinite; 
+            animation-timing-function: linear;
+            animation-direction: alternate;
+        }
+        @keyframes lights{
+        0%{
+                border-image:linear-gradient(to right,Yellow,blue);
+                border-image-slice: 12;
+            }
+            25%{
+                border-image:linear-gradient(to right,green,red);
+                border-image-slice: 12;
+                }
+            50%{
+                border-image:linear-gradient(to right,Blue,red);
+                border-image-slice: 1;
+                border-radius:15%;
+/*                animation-delay: 3s;*/
+
+            }
+            75%{
+                border-image:linear-gradient(to right,Orange,Purple);
+                border-image-slice: 1;
+                border-radius: 10%;
+            }
+            100%{
+                border-image:linear-gradient(to right,pink,grey);
+                border-image-slice: 1;
+                border-radius: 5%;
+/*                animation-delay: 3s;*/
+            }
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 18px;
+            box-sizing: border-box;
+            position: relative;
+            left:0px; 
+        }
+
+        button {
+            width: 45px;
+            height: 46px;
+            font-size: 18px;
+            margin: 5px;
+            border-radius: 25px 35px;
+            cursor: pointer;
+        }
+
+        button.operator {
+            background-color: red;
+        }
+
+        button.equals {
+            background-color: #ff9800;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="result" readonly>
+        <button onclick="clearInput()">C</button>
+        <button class="operator" onclick="Input('/')">/</button>
+        <button class="operator" onclick="Input('*')">x</button>
+        <button class="operator" onclick="Input('-')">-</button>
+        <button class="operator" onclick="Input('+')">+</button>
+        <br>
+        <button onclick="Input('7')">7</button>
+        <button onclick="Input('8')">8</button>
+        <button onclick="Input('9')">9</button>
+        
+        <br>
+        <button onclick="Input('4')">4</button>
+        <button onclick="Input('5')">5</button>
+        <button onclick="Input('6')">6</button>
+        
+        <br>
+        <button onclick="Input('1')">1</button>
+        <button onclick="Input('2')">2</button>
+        <button onclick="Input('3')">3</button>
+        
+        <br>
+        <button onclick="Input('0')">0</button>
+        <button onclick="Input('.')">.</button>
+        <button class="equals" onclick="calculate()">=</button>
+    </div>
+
+    <script>
+        function Input(value) {
+            document.getElementById("result").value += value;
+        }
+
+        function clearInput() {
+            document.getElementById("result").value = "";
+        }
+
+        function calculate() {
+            let expression = document.getElementById("result").value;
+            let result = eval(expression);
+            document.getElementById("result").value = result;
+        }
+    </script>
+</body>
+</html>
